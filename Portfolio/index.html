@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <title>Bharath Kusetty — Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
   <style>
@@ -21,8 +21,8 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: var(--display); overflow-x: hidden; }
+    html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
+    body { background: var(--bg); color: var(--text); font-family: var(--display); overflow-x: hidden; width: 100%; }
 
     body::before {
       content: '';
@@ -46,19 +46,19 @@
 
     #hero { min-height: 100vh; display: grid; place-items: center; padding: 8rem 4rem 4rem; position: relative; overflow: hidden; }
     .hero-glow { position: absolute; width: 700px; height: 700px; background: radial-gradient(circle, rgba(200,240,74,.12) 0%, transparent 70%); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; }
-    .hero-inner { max-width: 960px; text-align: center; position: relative; z-index: 1; }
+    .hero-inner { max-width: 960px; width: 100%; text-align: center; position: relative; z-index: 1; }
     .hero-tag { display: inline-flex; align-items: center; gap: .6rem; border: 1px solid var(--border); border-radius: 2rem; padding: .35rem 1rem; font-family: var(--mono); font-size: .72rem; color: var(--muted); letter-spacing: .15em; margin-bottom: 2rem; animation: fadeUp .8s ease both; }
-    .hero-tag span { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
-    h1 { font-size: clamp(3.5rem, 8vw, 7rem); font-weight: 800; line-height: 1; letter-spacing: -.03em; animation: fadeUp .9s .1s ease both; }
+    .hero-tag span { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
+    h1 { font-size: clamp(2.2rem, 8vw, 7rem); font-weight: 800; line-height: 1; letter-spacing: -.03em; animation: fadeUp .9s .1s ease both; }
     h1 em { font-style: normal; color: transparent; -webkit-text-stroke: 1.5px var(--accent); }
-    .hero-sub { margin-top: 1.8rem; font-family: var(--serif); font-style: italic; font-size: clamp(1.1rem, 2.5vw, 1.4rem); color: var(--muted); line-height: 1.7; max-width: 600px; margin-inline: auto; animation: fadeUp .9s .2s ease both; }
+    .hero-sub { margin-top: 1.8rem; font-family: var(--serif); font-style: italic; font-size: clamp(1rem, 2.5vw, 1.4rem); color: var(--muted); line-height: 1.7; max-width: 600px; margin-inline: auto; animation: fadeUp .9s .2s ease both; }
     .hero-cta { margin-top: 2.8rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeUp .9s .3s ease both; }
     .btn { padding: .8rem 2rem; border-radius: .4rem; font-family: var(--mono); font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: all .25s; }
     .btn-primary { background: var(--accent); color: #0b0c10; border: none; font-weight: 500; }
     .btn-primary:hover { background: #d9ff5a; transform: translateY(-2px); }
     .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-    .hero-stats { margin-top: 4rem; display: flex; justify-content: center; gap: 4rem; animation: fadeUp .9s .4s ease both; }
+    .hero-stats { margin-top: 4rem; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; animation: fadeUp .9s .4s ease both; }
     .stat-val { font-size: 2.2rem; font-weight: 800; color: var(--accent); }
     .stat-label { font-family: var(--mono); font-size: .7rem; color: var(--muted); letter-spacing: .1em; margin-top: .2rem; }
 
@@ -76,7 +76,7 @@
     .meta-row { display: flex; align-items: flex-start; gap: 1rem; padding: 1.2rem 1.5rem; background: var(--card); border: 1px solid var(--border); border-radius: .6rem; }
     .meta-icon { font-size: 1.3rem; }
     .meta-label { font-family: var(--mono); font-size: .68rem; color: var(--muted); letter-spacing: .12em; }
-    .meta-val { font-size: .88rem; color: var(--text); margin-top: .2rem; font-weight: 500; }
+    .meta-val { font-size: .88rem; color: var(--text); margin-top: .2rem; font-weight: 500; word-break: break-word; }
 
     #skills { background: var(--surface); }
     .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem; }
@@ -135,13 +135,13 @@
     @keyframes pulseGlow { 0%,100% { opacity: .6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }
     .contact-inner { position: relative; z-index: 1; }
     .contact-availability { display: inline-flex; align-items: center; gap: .7rem; border: 1px solid rgba(200,240,74,.25); border-radius: 2rem; padding: .4rem 1.2rem; margin-bottom: 2rem; font-family: var(--mono); font-size: .72rem; color: var(--accent); letter-spacing: .15em; background: rgba(200,240,74,.05); animation: fadeUp .6s ease both; }
-    .avail-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 rgba(200,240,74,.5); animation: ping 1.8s ease-in-out infinite; }
+    .avail-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 rgba(200,240,74,.5); animation: ping 1.8s ease-in-out infinite; flex-shrink: 0; }
     @keyframes ping { 0%,100% { box-shadow: 0 0 0 0 rgba(200,240,74,.5); } 50% { box-shadow: 0 0 0 7px rgba(200,240,74,0); } }
     #contact h2 { font-size: clamp(3rem, 7vw, 6rem); font-weight: 800; letter-spacing: -.04em; line-height: .95; }
     #contact h2 .word-outline { color: transparent; -webkit-text-stroke: 2px var(--accent); }
     #contact .contact-sub { color: var(--muted); font-family: var(--serif); font-style: italic; font-size: 1.15rem; margin: 2rem auto 3.5rem; max-width: 520px; line-height: 1.7; }
     .contact-cards { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; max-width: 860px; margin: 0 auto; }
-    .contact-card { flex: 1; min-width: 220px; max-width: 260px; background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 2rem 1.5rem; text-decoration: none; color: var(--text); display: flex; flex-direction: column; align-items: center; gap: 1rem; position: relative; overflow: hidden; transition: transform .3s, border-color .3s; }
+    .contact-card { flex: 1; min-width: 200px; max-width: 260px; background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 2rem 1.5rem; text-decoration: none; color: var(--text); display: flex; flex-direction: column; align-items: center; gap: 1rem; position: relative; overflow: hidden; transition: transform .3s, border-color .3s; }
     .contact-card::before { content: ''; position: absolute; inset: 0; background: var(--card-glow, rgba(200,240,74,.06)); opacity: 0; transition: opacity .35s; }
     .contact-card:hover { transform: translateY(-8px) scale(1.02); border-color: var(--card-border-hover, rgba(200,240,74,.4)); }
     .contact-card:hover::before { opacity: 1; }
@@ -170,6 +170,7 @@
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
+    /* ── TABLET ── */
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; } .nav-links { gap: 1.5rem; }
       section { padding: 5rem 1.5rem; } #hero { padding: 7rem 1.5rem 3rem; }
@@ -177,11 +178,31 @@
       .skills-grid { grid-template-columns: 1fr 1fr; }
       .exp-item { grid-template-columns: 1fr; gap: 1rem; } .exp-item::before { display: none; }
       .projects-grid { grid-template-columns: 1fr; }
-      .cert-grid { grid-template-columns: 1fr 1fr; } .hero-stats { gap: 2.5rem; }
+      .cert-grid { grid-template-columns: 1fr 1fr; } .hero-stats { gap: 2rem; }
     }
+
+    /* ── MOBILE ── */
     @media (max-width: 600px) {
-      .nav-links { display: none; } .skills-grid { grid-template-columns: 1fr; }
-      .cert-grid { grid-template-columns: 1fr; } .hero-stats { gap: 1.5rem; }
+      nav { padding: .9rem 1.2rem; }
+      .nav-links { display: none; }
+      #hero { padding: 6rem 1.2rem 3rem; }
+      section { padding: 4rem 1.2rem; }
+      h1 { font-size: clamp(2.2rem, 12vw, 3.5rem); }
+      .hero-tag { font-size: .65rem; padding: .3rem .8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 90vw; }
+      .hero-stats { gap: 1.2rem; flex-wrap: wrap; }
+      .hero-stats > div { min-width: 70px; }
+      .stat-val { font-size: 1.6rem; }
+      .stat-label { font-size: .6rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .cert-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .contact-cards { flex-direction: column; align-items: center; }
+      .contact-card { width: 100%; max-width: 100%; min-width: unset; }
+      #contact { padding: 5rem 1.2rem 4rem; }
+      .contact-bg-text { display: none; }
+      .achiev-item { flex-direction: column; gap: 1rem; }
+      .achiev-rank { font-size: 2rem; }
+      .contact-divider p { font-size: .6rem; }
     }
   </style>
 </head>
@@ -290,71 +311,14 @@
       <p class="section-label reveal">// projects</p>
       <h2 class="section-title reveal">Things I've <em>Built</em></h2>
       <div class="projects-grid">
-
-        <div class="project-card reveal">
-          <span class="proj-arrow">↗</span>
-          <div class="proj-num">PROJECT 01</div>
-          <h3>Employee Management System</h3>
-          <p>Full-stack HR web application featuring employee onboarding, role tracking, profile management, and a fully responsive UI. Established RESTful API endpoints for CRUD operations with search, filtering, and sorting capabilities.</p>
-          <div class="proj-stack"><span>React.js</span><span>Django</span><span>MySQL</span><span>REST API</span></div>
-        </div>
-
-        <div class="project-card reveal">
-          <span class="proj-arrow">↗</span>
-          <div class="proj-num">PROJECT 02</div>
-          <h3>Portfolio Website</h3>
-          <p>Designed and deployed a fully responsive personal portfolio using semantic HTML5, modern CSS3, and vanilla JavaScript. Ensured cross-device compatibility through responsive web design principles throughout.</p>
-          <div class="proj-stack"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Responsive</span></div>
-        </div>
-
-        <div class="project-card reveal">
-          <span class="proj-arrow">↗</span>
-          <div class="proj-num">PROJECT 03</div>
-          <h3>Cryptopy — Cryptography Toolkit</h3>
-          <p>Python toolkit implementing classic cipher algorithms: Caesar, Playfair, and One-Time Pad ciphers. Built with structured functions emphasizing algorithmic thinking and clean encryption logic.</p>
-          <div class="proj-stack"><span>Python</span><span>Algorithms</span><span>Cryptography</span></div>
-        </div>
-
-        <div class="project-card reveal">
-          <span class="proj-arrow">↗</span>
-          <div class="proj-num">PROJECT 04</div>
-          <h3>Tic-Tac-Toe CLI Game</h3>
-          <p>Interactive two-player terminal game built in Python using control structures, reusable functions, and robust input validation. Delivers a clean, enjoyable command-line game experience.</p>
-          <div class="proj-stack"><span>Python</span><span>CLI</span><span>OOP</span><span>Game Logic</span></div>
-        </div>
-
-        <div class="project-card reveal">
-          <span class="proj-arrow">↗</span>
-          <div class="proj-num">PROJECT 05</div>
-          <h3>Simple ATM</h3>
-          <p>A Python-based ATM simulation implementing core banking operations — balance inquiry, deposit, withdrawal, and PIN validation — with clean user prompts and error handling for invalid inputs.</p>
-          <div class="proj-stack"><span>Python</span><span>CLI</span><span>Control Flow</span><span>Input Validation</span></div>
-        </div>
-
-        <div class="project-card reveal">
-          <span class="proj-arrow">↗</span>
-          <div class="proj-num">PROJECT 06</div>
-          <h3>Calculator</h3>
-          <p>A fully functional JavaScript calculator with a responsive UI, supporting standard arithmetic operations — addition, subtraction, multiplication, and division — with a clean interactive interface.</p>
-          <div class="proj-stack"><span>JavaScript</span><span>HTML5</span><span>CSS3</span><span>DOM Manipulation</span></div>
-        </div>
-
-        <div class="project-card reveal">
-          <span class="proj-arrow">↗</span>
-          <div class="proj-num">PROJECT 07</div>
-          <h3>Calendar</h3>
-          <p>An interactive calendar built with CSS and JavaScript, featuring dynamic month navigation, date highlighting, and a clean visual layout — showcasing strong front-end fundamentals.</p>
-          <div class="proj-stack"><span>CSS</span><span>JavaScript</span><span>HTML5</span><span>UI Design</span></div>
-        </div>
-
-        <div class="project-card reveal">
-          <span class="proj-arrow">↗</span>
-          <div class="proj-num">PROJECT 08</div>
-          <h3>Patterns — 47 Programs</h3>
-          <p>A comprehensive collection of 47 Python pattern programs covering stars, numbers, alphabets, pyramids, diamonds, and complex shapes. Built using nested loops to sharpen logical thinking and problem-solving skills.</p>
-          <div class="proj-stack"><span>Python</span><span>Jupyter Notebook</span><span>Loops</span><span>Logic Building</span></div>
-        </div>
-
+        <div class="project-card reveal"><span class="proj-arrow">↗</span><div class="proj-num">PROJECT 01</div><h3>Employee Management System</h3><p>Full-stack HR web application featuring employee onboarding, role tracking, profile management, and a fully responsive UI. Established RESTful API endpoints for CRUD operations with search, filtering, and sorting capabilities.</p><div class="proj-stack"><span>React.js</span><span>Django</span><span>MySQL</span><span>REST API</span></div></div>
+        <div class="project-card reveal"><span class="proj-arrow">↗</span><div class="proj-num">PROJECT 02</div><h3>Portfolio Website</h3><p>Designed and deployed a fully responsive personal portfolio using semantic HTML5, modern CSS3, and vanilla JavaScript. Ensured cross-device compatibility through responsive web design principles throughout.</p><div class="proj-stack"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Responsive</span></div></div>
+        <div class="project-card reveal"><span class="proj-arrow">↗</span><div class="proj-num">PROJECT 03</div><h3>Cryptopy — Cryptography Toolkit</h3><p>Python toolkit implementing classic cipher algorithms: Caesar, Playfair, and One-Time Pad ciphers. Built with structured functions emphasizing algorithmic thinking and clean encryption logic.</p><div class="proj-stack"><span>Python</span><span>Algorithms</span><span>Cryptography</span></div></div>
+        <div class="project-card reveal"><span class="proj-arrow">↗</span><div class="proj-num">PROJECT 04</div><h3>Tic-Tac-Toe CLI Game</h3><p>Interactive two-player terminal game built in Python using control structures, reusable functions, and robust input validation. Delivers a clean, enjoyable command-line game experience.</p><div class="proj-stack"><span>Python</span><span>CLI</span><span>OOP</span><span>Game Logic</span></div></div>
+        <div class="project-card reveal"><span class="proj-arrow">↗</span><div class="proj-num">PROJECT 05</div><h3>Simple ATM</h3><p>A Python-based ATM simulation implementing core banking operations — balance inquiry, deposit, withdrawal, and PIN validation — with clean user prompts and error handling for invalid inputs.</p><div class="proj-stack"><span>Python</span><span>CLI</span><span>Control Flow</span><span>Input Validation</span></div></div>
+        <div class="project-card reveal"><span class="proj-arrow">↗</span><div class="proj-num">PROJECT 06</div><h3>Calculator</h3><p>A fully functional JavaScript calculator with a responsive UI, supporting standard arithmetic operations — addition, subtraction, multiplication, and division — with a clean interactive interface.</p><div class="proj-stack"><span>JavaScript</span><span>HTML5</span><span>CSS3</span><span>DOM Manipulation</span></div></div>
+        <div class="project-card reveal"><span class="proj-arrow">↗</span><div class="proj-num">PROJECT 07</div><h3>Calendar</h3><p>An interactive calendar built with CSS and JavaScript, featuring dynamic month navigation, date highlighting, and a clean visual layout — showcasing strong front-end fundamentals.</p><div class="proj-stack"><span>CSS</span><span>JavaScript</span><span>HTML5</span><span>UI Design</span></div></div>
+        <div class="project-card reveal"><span class="proj-arrow">↗</span><div class="proj-num">PROJECT 08</div><h3>Patterns — 47 Programs</h3><p>A comprehensive collection of 47 Python pattern programs covering stars, numbers, alphabets, pyramids, diamonds, and complex shapes. Built using nested loops to sharpen logical thinking and problem-solving skills.</p><div class="proj-stack"><span>Python</span><span>Jupyter Notebook</span><span>Loops</span><span>Logic Building</span></div></div>
       </div>
     </div>
   </section>
